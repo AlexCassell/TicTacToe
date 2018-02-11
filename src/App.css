@@ -31,12 +31,15 @@ body{
   left: calc(50% - 15vw);
   width: 30vw;
   height: 30vw;
-  border: red solid 2px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .gameSquares{
-
+  width: 33.3%;
+  height: 33.3%;
+  background: none;
+  border: none;
 }
