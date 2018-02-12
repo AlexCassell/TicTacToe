@@ -9,6 +9,7 @@ let turnNumber = 1;
 let overallWins = 0, overallDraws = 0, overallLosses = 0;
 let sessionWins = 0, sessionDraws = 0, sessionLosses = 0;
 let overallArray = [];
+let outcome = 0; //1 for win 2 for draw 3 for loss
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class App extends Component {
         'sessionDraws': 0,
         'sessionLosses': 0,
         'gameOver': '',
-        'saveStats': ''
+        'saveStats': '',
+        'outcome': ''
     };
     this.saveStats = this.saveStats.bind(this);
   }
@@ -187,22 +189,22 @@ class App extends Component {
   AlexTurnTwo(){
     if(this.state.slot1 === "X" && this.state.slot9 === "O"){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.playersTurn();
     }
     else if(this.state.slot3 === "X" && this.state.slot7 === "O"){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.playersTurn();
     }
     else if(this.state.slot7 === "X" && this.state.slot3 === "O"){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.playersTurn();
     }
     else if(this.state.slot9 === "X" && this.state.slot1 === "O"){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.playersTurn();
     }
     else{
@@ -246,129 +248,129 @@ class App extends Component {
 
 
   AlexAbleWinCheck(){
-    console.log("here");
+    // console.log("here");
     if(this.state.slot1 === "X" && this.state.slot9 === "X" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot1 === "X" && this.state.slot4 === "X" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot1 === "X" && this.state.slot5 === "X" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot1 === "X" && this.state.slot2 === "X" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot1 === "X" && this.state.slot7 === "X" && this.state.slot4 === null){
       this.setState({slot4: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot1 === "X" && this.state.slot3 === "X" && this.state.slot2 === null){
       this.setState({slot2: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot2 === "X" && this.state.slot3 === "X" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot2 === "X" && this.state.slot5 === "X" && this.state.slot8 === null){
       this.setState({slot8: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot2 === "X" && this.state.slot8 === "X" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot3 === "X" && this.state.slot5 === "X" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot3 === "X" && this.state.slot6 === "X" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot3 === "X" && this.state.slot7 === "X" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot3 === "X" && this.state.slot9 === "X" && this.state.slot6 === null){
       this.setState({slot6: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot4 === "X" && this.state.slot5 === "X" && this.state.slot6 === null){
       this.setState({slot6: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot4 === "X" && this.state.slot6 === "X" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot4 === "X" && this.state.slot7 === "X" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot5 === "X" && this.state.slot6 === "X" && this.state.slot4 === null){
       this.setState({slot4: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot5 === "X" && this.state.slot7 === "X" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot5 === "X" && this.state.slot8 === "X" && this.state.slot2 === null){
       this.setState({slot2: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot5 === "X" && this.state.slot9 === "X" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot6 === "X" && this.state.slot9 === "X" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot7 === "X" && this.state.slot8 === "X" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot7 === "X" && this.state.slot9 === "X" && this.state.slot8 === null){
       this.setState({slot8: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else if(this.state.slot8 === "X" && this.state.slot9 === "X" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.AlexWins();
     }
     else{
-      console.log("here");
+      // console.log("here");
       this.PlayerNextTurnWinPossibleCheck();
     }
   }
@@ -376,169 +378,169 @@ class App extends Component {
   PlayerNextTurnWinPossibleCheck(){
     if(this.state.slot1 === "O" && this.state.slot9 === "O" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "O" && this.state.slot4 === "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "O" && this.state.slot5 === "O" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "O" && this.state.slot2 === "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "O" && this.state.slot7 === "O" && this.state.slot4 === null){
       this.setState({slot4: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "O" && this.state.slot3 === "O" && this.state.slot2 === null){
       this.setState({slot2: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot2 === "O" && this.state.slot3 === "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot2 === "O" && this.state.slot5 === "O" && this.state.slot8 === null){
       this.setState({slot8: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot2 === "O" && this.state.slot8 === "O" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot3 === "O" && this.state.slot5 === "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot3 === "O" && this.state.slot6 === "O" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot3 === "O" && this.state.slot7 === "O" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot3 === "O" && this.state.slot9 === "O" && this.state.slot6 === null){
       this.setState({slot6: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot4 === "O" && this.state.slot5 === "O" && this.state.slot6 === null){
       this.setState({slot6: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot4 === "O" && this.state.slot6 === "O" && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot4 === "O" && this.state.slot7 === "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot5 === "O" && this.state.slot6 === "O" && this.state.slot4 === null){
       this.setState({slot4: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot5 === "O" && this.state.slot7 === "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot5 === "O" && this.state.slot8 === "O" && this.state.slot2 === null){
       this.setState({slot2: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot5 === "O" && this.state.slot9 === "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot6 === "O" && this.state.slot9 === "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot7 === "O" && this.state.slot8 === "O" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot7 === "O" && this.state.slot9 === "O" && this.state.slot8 === null){
       this.setState({slot8: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot8 === "O" && this.state.slot9 === "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else{
-      console.log("here");
+      // console.log("here");
       this.AlexSetUpWin();
     }
   }
 
   AlexSetUpWin(){
-    console.log("here");
+    // console.log("here");
     if(this.state.slot1 === "X" && this.state.slot7 !== "O" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "X" && this.state.slot9 !== "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "X" && this.state.slot3 !== "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot1 === "X" && this.state.slot3 !== "O" && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot3 === "X" && this.state.slot9 !== "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot7 === "X" && this.state.slot9 !== "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else if(this.state.slot9 === "X" && this.state.slot3 !== "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.CheckPlayerWon();
     }
     else{
-      console.log("here");
+      // console.log("here");
       this.DoubleUp();
     }
   }
@@ -652,51 +654,51 @@ class App extends Component {
     // console.log(randomNumber);
     if(randomNumber === 1 && this.state.slot1 === null){
       this.setState({slot1: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 2 && this.state.slot2 === null){
       this.setState({slot2: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 3 && this.state.slot3 === null){
       this.setState({slot3: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 4 && this.state.slot4 === null){
       this.setState({slot4: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 5 && this.state.slot5 === null){
       this.setState({slot5: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 6 && this.state.slot6 === null){
       this.setState({slot6: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 7 && this.state.slot7 === null){
       this.setState({slot7: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 8 && this.state.slot8 === null){
       this.setState({slot8: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else if(randomNumber === 9 && this.state.slot9 === null){
       this.setState({slot9: "X"});
-      console.log("here");
+      // console.log("here");
       this.checkDraw();
     }
     else{
-      console.log("here");
+      // console.log("here");
       this.RandomChoice();
     }
   }
@@ -735,7 +737,9 @@ class App extends Component {
     }
     else{
       console.log("Draw of sure");
-      overallDraws += 1;
+      outcome = 2;
+      this.saveStats();
+      outcome = 0;
       sessionDraws += 1;
       this.setState({overallDraws: overallDraws});
       this.setState({sessionDraws: sessionDraws});
@@ -750,7 +754,9 @@ class App extends Component {
 
   AlexWins(){
     console.log("Alex Won");
-    overallWins += 1;
+    outcome = 1;
+    this.saveStats();
+    outcome = 0;
     sessionWins += 1;
     this.setState({overallWins: overallWins});
     this.setState({sessionWins: sessionWins});
@@ -764,6 +770,9 @@ class App extends Component {
 
   PlayerWins(){
     console.log("Player Won");
+    outcome = 3;
+    this.saveStats();
+    outcome = 0;
     this.setState({overallLosses: overallLosses});
     this.setState({sessionLosses: sessionLosses});
     this.setState({gameover:
@@ -775,7 +784,6 @@ class App extends Component {
   }
 
   ResetGame(){
-    this.saveStats();
     this.setState({
       gameover:'',
       slot1: null,
@@ -795,40 +803,49 @@ class App extends Component {
 
   //firebase code below
   saveStats(){
-    // console.log("saved");
-    this.setState({saveStats: ''});  const ticTacToeRef = firebase.database().ref('tictactoe');
+    this.setState({saveStats: ''});  const vsAlexRef = firebase.database().ref('vsAlex');
     const item = {
-        'overallWins': overallWins,
-        'overallDraws': overallDraws,
-        'overallLosses': overallLosses
+        'outcome': outcome
     }
-    ticTacToeRef.push(item);
+    vsAlexRef.push(item);
 }
 
 loadData(){
-  let query = firebase.database().ref("tictactoe").orderByKey();
+  overallArray = [];
+  let query = firebase.database().ref("vsAlex").orderByKey();
   query.once("value")
   .then(function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
           var key = childSnapshot.key;
           var childData = childSnapshot.val();
-          // console.log(key);
-          // console.log(childData);
-          for (const [key, value] of Object.entries(childData)) {
+          for (let [key, value] of Object.entries(childData)) {
             overallArray.push(value);
             console.log(overallArray);
           }
       });
   });
-  setTimeout(this.showLoadedData.bind(this), 500);
+  setTimeout(this.showLoadedData.bind(this), 1000);
 }
-  //create loop that adds all save together.. tomorrow.. it is last af
+
   showLoadedData(){
-    this.setState({overallDraws: overallArray[0]});
-    this.setState({overallLosses: overallArray[1]});
-    this.setState({overallWins: overallArray[2]});
-    console.log(this.state.overallDraws);
+    overallDraws = 0;
+    overallLosses = 0;
+    overallWins = 0;
+    for(let i = 0; i < overallArray.length; i++){
+        if(overallArray[i] === 1){
+          overallWins += 1;
+        }
+        else if(overallArray[i] === 2){
+          overallDraws += 1;
+        }
+        else if(overallArray[i] === 3){
+          overallLosses += 1;
+        }
   }
+  this.setState({overallDraws: overallDraws});
+  this.setState({overallLosses: overallLosses});
+  this.setState({overallWins:overallWins});
+}
 
 
 
