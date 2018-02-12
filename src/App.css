@@ -1,6 +1,9 @@
 body{
   background-color: #94E8B4;
+  
 }
+
+.global {font-family: 'Open Sans', sans-serif;}
 
 .sideBar{
   position: absolute;
@@ -8,7 +11,7 @@ body{
   width: 10%;
   height: 100%;
   /* border: 3px solid black; */
-  background-color: #72BDA3;
+  background-color: #94E8B4;
 }
 
 .sideBar__whoseTurn{
@@ -38,11 +41,11 @@ body{
 }
 
 .sideBar__ScoreWrapper__overall{
-  margin-top: 50vh;
+  margin-top: 20vh;
 }
 
 .sideBar__ScoreWrapper__session{
-  margin-top: 25vh;
+  margin-top: 5vh;
 }
 
 .sideBar__ScoreWrapper__title{

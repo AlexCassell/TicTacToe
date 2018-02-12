@@ -39,6 +39,8 @@ class App extends Component {
   }
 
   componentDidMount(){
+    console.clear();
+        console.log("%c Thank you for you taking the time to look at my project.  If you would like to see the underlying code you can visit: https://github.com/AlexCassell/TicTacToe", 'background: black; color: white')
     this.loadData();
     this.setState({whoseTurn: 
       <div className="sideBar__whoseTurn alexsTurn">
@@ -736,7 +738,7 @@ class App extends Component {
       this.playersTurn();
     }
     else{
-      console.log("Draw of sure");
+      // console.log("Draw of sure");
       outcome = 2;
       this.saveStats();
       outcome = 0;
@@ -753,7 +755,7 @@ class App extends Component {
   }
 
   AlexWins(){
-    console.log("Alex Won");
+    // console.log("Alex Won");
     outcome = 1;
     this.saveStats();
     outcome = 0;
@@ -769,7 +771,7 @@ class App extends Component {
   }
 
   PlayerWins(){
-    console.log("Player Won");
+    // console.log("Player Won");
     outcome = 3;
     this.saveStats();
     outcome = 0;
@@ -820,7 +822,7 @@ loadData(){
           var childData = childSnapshot.val();
           for (let [key, value] of Object.entries(childData)) {
             overallArray.push(value);
-            console.log(overallArray);
+            // console.log(overallArray);
           }
       });
   });
