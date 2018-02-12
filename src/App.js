@@ -5,6 +5,8 @@ import './App.css';
 let playerTurn = false;
 
 let turnNumber = 1;
+let overallWins = 0, overallDraws = 0, overallLosses = 0;
+let sessionWins = 0, sessionDraws = 0, sessionLosses = 0;
 
 class App extends Component {
   constructor(props) {
@@ -18,11 +20,24 @@ class App extends Component {
         'slot6': null,
         'slot7': null,
         'slot8': null,
-        'slot9': null
+        'slot9': null,
+        'whoseTurn': '',
+        'overallWins': 0,
+        'overallDraws': 0,
+        'overallLosses': 0,
+        'sessionWins': 0,
+        'sessionDraws': 0,
+        'sessionLosses': 0,
+        'gameOver': ''
     };
   }
 
   componentDidMount(){
+    this.setState({whoseTurn: 
+      <div className="sideBar__whoseTurn alexsTurn">
+      Alex's Turn
+      </div>
+    });
     this.AlexTurnOne();
   }
 
@@ -118,20 +133,31 @@ class App extends Component {
   }
 
   handleComputerTurn(){
+    this.setState({whoseTurn: 
+      <div className="sideBar__whoseTurn alexsTurn">
+      Alex's Turn
+      </div>
+    });
+    //delayed so that Alex's turn is shown
     if(turnNumber === 1){
-      this.AlexTurnOne();
+      setTimeout(this.AlexTurnOne.bind(this), 500);
     }
     else if(turnNumber === 2){
-      this.AlexTurnTwo();
+      setTimeout(this.AlexTurnTwo.bind(this), 500);
     }
     else{
-      this.AlexTurnThreeAbove();
+      setTimeout(this.AlexTurnThreeAbove.bind(this), 500);
     }
     // console.log(turnNumber);
   }
 
   playersTurn(){
     playerTurn = true;
+    this.setState({whoseTurn: 
+      <div className="sideBar__whoseTurn playersTurn">
+      Your Turn
+      </div>
+    });
   }
 
   AlexTurnOne(){
@@ -486,6 +512,11 @@ class App extends Component {
       console.log("here");
       this.CheckPlayerWon();
     }
+    else if(this.state.slot1 === "X" && this.state.slot3 !== "O" && this.state.slot9 === null){
+      this.setState({slot9: "X"});
+      console.log("here");
+      this.CheckPlayerWon();
+    }
     else if(this.state.slot3 === "X" && this.state.slot9 !== "O" && this.state.slot7 === null){
       this.setState({slot7: "X"});
       console.log("here");
@@ -699,15 +730,61 @@ class App extends Component {
     }
     else{
       console.log("Draw of sure");
+      overallDraws += 1;
+      sessionDraws += 1;
+      this.setState({overallDraws: overallDraws});
+      this.setState({sessionDraws: sessionDraws});
+      this.setState({gameover:
+        <button className="gameOver alexWin">
+          Draw!!
+        </button>
+        })
+        setTimeout(this.ResetGame.bind(this), 5000);
     }
   }
 
   AlexWins(){
     console.log("Alex Won");
+    overallWins += 1;
+    sessionWins += 1;
+    this.setState({overallWins: overallWins});
+    this.setState({sessionWins: sessionWins});
+    this.setState({gameover:
+      <button className="gameOver alexWin">
+        Alex Wins!!
+      </button>
+      })
+      setTimeout(this.ResetGame.bind(this), 5000);
   }
 
   PlayerWins(){
     console.log("Player Won");
+    this.setState({overallLosses: overallLosses});
+    this.setState({sessionLosses: sessionLosses});
+    this.setState({gameover:
+      <button className="gameOver playerWin">
+        You Won!!
+      </button>
+      })
+      setTimeout(this.ResetGame.bind(this), 5000);
+  }
+
+  ResetGame(){
+    this.setState({
+      gameover:'',
+      slot1: null,
+      slot2: null,
+      slot3: null,
+      slot4: null,
+      slot5: null,
+      slot6: null,
+      slot7: null,
+      slot8: null,
+      slot9: null,
+      whoseTurn:''
+    });
+    turnNumber = 1;
+    this.componentDidMount();
   }
 
 
@@ -716,10 +793,66 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.state.gameover}
         <div className="title">
           Tic Tac Toe
         </div>
         <div className="sideBar">
+          {this.state.whoseTurn}
+          <div className="sideBar__ScoreWrapper sideBar__ScoreWrapper__session">
+            <div className="sideBar__ScoreWrapper__title">
+              Session Statistics
+            </div>
+            <div className="sideBar__ScoreWrapper__split">
+              <div className="sideBar__ScoreWrapper__alex">
+                Wins:
+              </div>
+              <div className="sideBar__ScoreWrapper__alex">
+                Draws:
+              </div>
+              <div className="sideBar__ScoreWrapper__losses">
+                Losses:
+              </div>
+            </div>
+            <div className="sideBar__ScoreWrapper__splitOutside">
+            <div className="sideBar__ScoreWrapper__alex">
+                {this.state.sessionWins}
+              </div>
+              <div className="sideBar__ScoreWrapper__alex">
+                {this.state.sessionDraws}
+              </div>
+              <div className="sideBar__ScoreWrapper__losses">
+                {this.state.sessionLosses}
+              </div>
+            </div>
+          </div>
+          <div className="sideBar__ScoreWrapper sideBar__ScoreWrapper__overall">
+            <div className="sideBar__ScoreWrapper__title">
+              Overall Statistics
+            </div>
+            <div className="sideBar__ScoreWrapper__split">
+              <div className="sideBar__ScoreWrapper__alex">
+                Wins:
+              </div>
+              <div className="sideBar__ScoreWrapper__alex">
+                Draws:
+              </div>
+              <div className="sideBar__ScoreWrapper__losses">
+                Losses:
+              </div>
+            </div>
+            <div className="sideBar__ScoreWrapper__splitOutside">
+            <div className="sideBar__ScoreWrapper__alex">
+                {this.state.overallWins}
+              </div>
+              <div className="sideBar__ScoreWrapper__alex">
+                {this.state.overallDraws}
+              </div>
+              <div className="sideBar__ScoreWrapper__losses">
+                {this.state.overallLosses}
+              </div>
+            </div>
+          </div>
         </div>
         <div className="gameWrapper">
           {/* row 1 */}
