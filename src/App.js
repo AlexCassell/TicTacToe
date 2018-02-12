@@ -869,7 +869,6 @@ loadData(){
         <div className="title">
           Tic Tac Toe
         </div>
-        <div className="sideBar">
           {this.state.whoseTurn}
           <div className="sideBar__ScoreWrapper sideBar__ScoreWrapper__session">
             <div className="sideBar__ScoreWrapper__title">
@@ -925,7 +924,6 @@ loadData(){
               </div>
             </div>
           </div>
-        </div>
         <div className="gameWrapper">
           {/* row 1 */}
           <button className="gameSquares" name="1" onClick={(e) => this.handlePlayerTurn(e)}>
