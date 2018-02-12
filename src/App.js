@@ -1,5 +1,6 @@
+/*eslint no-unused-vars: "off"*/
 import React, { Component } from 'react';
-
+import firebase from './firebase.js';
 import './App.css';
 
 let playerTurn = false;
@@ -7,6 +8,7 @@ let playerTurn = false;
 let turnNumber = 1;
 let overallWins = 0, overallDraws = 0, overallLosses = 0;
 let sessionWins = 0, sessionDraws = 0, sessionLosses = 0;
+let overallArray = [];
 
 class App extends Component {
   constructor(props) {
@@ -28,11 +30,14 @@ class App extends Component {
         'sessionWins': 0,
         'sessionDraws': 0,
         'sessionLosses': 0,
-        'gameOver': ''
+        'gameOver': '',
+        'saveStats': ''
     };
+    this.saveStats = this.saveStats.bind(this);
   }
 
   componentDidMount(){
+    this.loadData();
     this.setState({whoseTurn: 
       <div className="sideBar__whoseTurn alexsTurn">
       Alex's Turn
@@ -770,6 +775,7 @@ class App extends Component {
   }
 
   ResetGame(){
+    this.saveStats();
     this.setState({
       gameover:'',
       slot1: null,
@@ -785,6 +791,43 @@ class App extends Component {
     });
     turnNumber = 1;
     this.componentDidMount();
+  }
+
+  //firebase code below
+  saveStats(){
+    // console.log("saved");
+    this.setState({saveStats: ''});  const ticTacToeRef = firebase.database().ref('tictactoe');
+    const item = {
+        'overallWins': overallWins,
+        'overallDraws': overallDraws,
+        'overallLosses': overallLosses
+    }
+    ticTacToeRef.push(item);
+}
+
+loadData(){
+  let query = firebase.database().ref("tictactoe").orderByKey();
+  query.once("value")
+  .then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+          var key = childSnapshot.key;
+          var childData = childSnapshot.val();
+          // console.log(key);
+          // console.log(childData);
+          for (const [key, value] of Object.entries(childData)) {
+            overallArray.push(value);
+            console.log(overallArray);
+          }
+      });
+  });
+  setTimeout(this.showLoadedData.bind(this), 500);
+}
+  //create loop that adds all save together.. tomorrow.. it is last af
+  showLoadedData(){
+    this.setState({overallDraws: overallArray[0]});
+    this.setState({overallLosses: overallArray[1]});
+    this.setState({overallWins: overallArray[2]});
+    console.log(this.state.overallDraws);
   }
 
 
