@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import firebase from './firebase.js';
 import './App.css';
 
-let playerTurn = false;
+let playerTurn;
 
 let turnNumber = 1;
 let overallWins = 0, overallDraws = 0, overallLosses = 0;
@@ -42,12 +42,25 @@ class App extends Component {
     console.clear();
         console.log("%c Thank you for you taking the time to look at my project.  If you would like to see the underlying code you can visit: https://github.com/AlexCassell/TicTacToe", 'background: black; color: white')
     this.loadData();
-    this.setState({whoseTurn: 
-      <div className="sideBar__whoseTurn alexsTurn">
-      Alex's Turn
-      </div>
-    });
-    this.AlexTurnOne();
+    let randomNumber = Math.random() * (2 - 1) + 1;
+    randomNumber = Math.round(randomNumber);
+    if(randomNumber === 1){
+      playerTurn = false
+      this.setState({whoseTurn: 
+        <div className="sideBar__whoseTurn alexsTurn">
+        Alex's Turn
+        </div>
+      });
+      this.AlexTurnOne();
+    }
+    else{
+      playerTurn = true
+      this.setState({whoseTurn: 
+        <div className="sideBar__whoseTurn playersTurn">
+        Your Turn
+        </div>
+      });
+    }
   }
 
   handlePlayerTurn(e){
@@ -173,16 +186,16 @@ class App extends Component {
     let randomNumber = Math.random() * (4 - 1) + 1;
     randomNumber = Math.round(randomNumber);
     // console.log(randomNumber);
-    if(randomNumber === 1){
+    if(randomNumber === 1 && this.state.slot1 === null){
       this.setState({slot1: "X"});
     }
-    else if(randomNumber === 2){
+    else if(randomNumber === 2 && this.state.slot2 === null){
       this.setState({slot3: "X"});
     }
-    else if(randomNumber === 3){
+    else if(randomNumber === 3 && this.state.slot3 === null){
       this.setState({slot7: "X"});
     }
-    else if(randomNumber === 4){
+    else if(randomNumber === 4 && this.state.slot4 === null){
       this.setState({slot9: "X"});
     }
     this.playersTurn();
@@ -651,57 +664,54 @@ class App extends Component {
   }
 
   RandomChoice(){
-    let randomNumber = Math.random() * (9 - 1) + 1;
-    randomNumber = Math.round(randomNumber);
-    // console.log(randomNumber);
-    if(randomNumber === 1 && this.state.slot1 === null){
+    if(this.state.slot1 === null){
       this.setState({slot1: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 2 && this.state.slot2 === null){
+    else if(this.state.slot2 === null){
       this.setState({slot2: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 3 && this.state.slot3 === null){
+    else if(this.state.slot3 === null){
       this.setState({slot3: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 4 && this.state.slot4 === null){
+    else if(this.state.slot4 === null){
       this.setState({slot4: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 5 && this.state.slot5 === null){
+    else if(this.state.slot5 === null){
       this.setState({slot5: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 6 && this.state.slot6 === null){
+    else if(this.state.slot6 === null){
       this.setState({slot6: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 7 && this.state.slot7 === null){
+    else if(this.state.slot7 === null){
       this.setState({slot7: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 8 && this.state.slot8 === null){
+    else if(this.state.slot8 === null){
       this.setState({slot8: "X"});
       // console.log("here");
       this.checkDraw();
     }
-    else if(randomNumber === 9 && this.state.slot9 === null){
+    else if(this.state.slot9 === null){
       this.setState({slot9: "X"});
       // console.log("here");
       this.checkDraw();
     }
     else{
       // console.log("here");
-      this.RandomChoice();
+      this.checkDraw();
     }
   }
 
