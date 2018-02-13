@@ -933,6 +933,7 @@ class App extends Component {
     outcome = 3;
     this.saveStats();
     outcome = 0;
+    sessionLosses += 1;
     this.setState({overallLosses: overallLosses});
     this.setState({sessionLosses: sessionLosses});
     this.setState({gameover:
