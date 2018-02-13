@@ -1,5 +1,3 @@
 # Basic Tic Tac Toe
 
-Who gets to go first is now random.  Still unbeatable as far as I can tell. I once read that it takes 15 hours to program the AI for Tic Tac Toe and I thought that was crazy.  It took me 5 hours to program the entire game, including a long lunch break and a screaming toddler.
-
-About 6 hours once the backend and stats were added.
+Someone told me that it takes 15 hours to write the AI for Tic Tac Toe and I wanted to see if that could possible be true.  It took me 5 hours to build the game, and another hour to add the stats and backend.  This code needs to be refactored, because it could be done with less code but this was just an exercise so I doubt I will mess with it anymore after today.

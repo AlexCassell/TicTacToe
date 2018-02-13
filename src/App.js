@@ -5,7 +5,7 @@ import './App.css';
 
 let playerTurn;
 
-let turnNumber = 1;
+let turnNumber = 0;
 let overallWins = 0, overallDraws = 0, overallLosses = 0;
 let sessionWins = 0, sessionDraws = 0, sessionLosses = 0;
 let overallArray = [];
@@ -39,13 +39,13 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.clear();
+    // console.clear();
         console.log("%c Thank you for you taking the time to look at my project.  If you would like to see the underlying code you can visit: https://github.com/AlexCassell/TicTacToe", 'background: black; color: white')
     this.loadData();
     let randomNumber = Math.random() * (2 - 1) + 1;
     randomNumber = Math.round(randomNumber);
     if(randomNumber === 1){
-      playerTurn = false
+      playerTurn = false;
       this.setState({whoseTurn: 
         <div className="sideBar__whoseTurn alexsTurn">
         Alex's Turn
@@ -54,7 +54,7 @@ class App extends Component {
       this.AlexTurnOne();
     }
     else{
-      playerTurn = true
+      playerTurn = true;
       this.setState({whoseTurn: 
         <div className="sideBar__whoseTurn playersTurn">
         Your Turn
@@ -66,10 +66,10 @@ class App extends Component {
   handlePlayerTurn(e){
     if(playerTurn){
       playerTurn = false;
-
       if(e.target.name === "1"){
         if(this.state.slot1 === null){
           this.setState({slot1: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -78,6 +78,7 @@ class App extends Component {
       if(e.target.name === "2"){
         if(this.state.slot2 === null){
           this.setState({slot2: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -86,14 +87,7 @@ class App extends Component {
       if(e.target.name === "3"){
         if(this.state.slot3 === null){
           this.setState({slot3: "O"});
-        }
-        else{
-          playerTurn = true;
-        }
-      }
-      if(e.target.name === "3"){
-        if(this.state.slot3 === null){
-          this.setState({slot3: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -102,6 +96,7 @@ class App extends Component {
       if(e.target.name === "4"){
         if(this.state.slot4 === null){
           this.setState({slot4: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -110,6 +105,7 @@ class App extends Component {
       if(e.target.name === "5"){
         if(this.state.slot5 === null){
           this.setState({slot5: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -118,6 +114,7 @@ class App extends Component {
       if(e.target.name === "6"){
         if(this.state.slot6 === null){
           this.setState({slot6: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -126,6 +123,7 @@ class App extends Component {
       if(e.target.name === "7"){
         if(this.state.slot7 === null){
           this.setState({slot7: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -134,6 +132,7 @@ class App extends Component {
       if(e.target.name === "8"){
         if(this.state.slot8 === null){
           this.setState({slot8: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
@@ -142,32 +141,129 @@ class App extends Component {
       if(e.target.name === "9"){
         if(this.state.slot9 === null){
           this.setState({slot9: "O"});
+          setTimeout(this.playerCheckPlayerWon.bind(this), 800);
         }
         else{
           playerTurn = true;
         }
       }
       turnNumber += 1;
-      // console.log(turnNumber);
+      console.log("turn: " + turnNumber);
       // let everything catch up
-      setTimeout(this.handleComputerTurn.bind(this), 500);
+    }
+  }
+
+  playerCheckPlayerWon(){
+    if(this.state.slot1 === "O" && this.state.slot2 === "O" && this.state.slot3 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot1 === "O" && this.state.slot4 === "O" && this.state.slot7 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot1 === "O" && this.state.slot5 === "O" && this.state.slot9 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot2 === "O" && this.state.slot5 === "O" && this.state.slot8 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot3 === "O" && this.state.slot6 === "O" && this.state.slot9 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot3 === "O" && this.state.slot5 === "O" && this.state.slot7 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot4 === "O" && this.state.slot5 === "O" && this.state.slot6 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else if(this.state.slot7 === "O" && this.state.slot8 === "O" && this.state.slot9 === "O"){
+      // console.log("here");
+      this.PlayerWins();
+    }
+    else{
+      this.playerCheckDraw();
+      // console.log("here");
+    }
+  }
+
+  playerCheckDraw(){
+    if(this.state.slot1 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot2 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot3 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot4 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot5 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot6 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot7 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot8 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else if(this.state.slot9 === null){
+      // console.log("here");
+      this.handleComputerTurn();
+    }
+    else{
+      // console.log("Draw of sure");
+      outcome = 2;
+      this.saveStats();
+      outcome = 0;
+      sessionDraws += 1;
+      this.setState({overallDraws: overallDraws});
+      this.setState({sessionDraws: sessionDraws});
+      this.setState({gameover:
+        <button className="gameOver alexWin">
+          Draw!!
+        </button>
+        })
+        setTimeout(this.ResetGame.bind(this), 5000);
     }
   }
 
   handleComputerTurn(){
+    // console.log("here");
     this.setState({whoseTurn: 
       <div className="sideBar__whoseTurn alexsTurn">
       Alex's Turn
       </div>
     });
     //delayed so that Alex's turn is shown
-    if(turnNumber === 1){
+    if(turnNumber <= 1){
+      // console.log("here");
       setTimeout(this.AlexTurnOne.bind(this), 500);
     }
     else if(turnNumber === 2){
+      // console.log("here");
       setTimeout(this.AlexTurnTwo.bind(this), 500);
     }
     else{
+      // console.log("here");
       setTimeout(this.AlexTurnThreeAbove.bind(this), 500);
     }
     // console.log(turnNumber);
@@ -183,41 +279,94 @@ class App extends Component {
   }
 
   AlexTurnOne(){
+    // console.log(turnNumber);
+    if(turnNumber === 0){
+      this.alexTurnOneZero();
+    }
+    else{
+      if(this.state.slot1 === "O"){
+        this.setState({slot2: "X"});
+      }
+      else if(this.state.slot2 === "O"){
+        this.alexTurnOneZero();
+      }
+      else if(this.state.slot3 === "O"){
+        this.setState({slot2: "X"});
+      }
+      else if(this.state.slot4 === "O"){
+        this.setState({slot5: "X"});
+      }
+      else if(this.state.slot5 === "O"){
+        this.alexTurnOneZero();
+      }
+      else if(this.state.slot6 === "O"){
+        this.setState({slot5: "X"});
+      }
+      else if(this.state.slot7 === "O"){
+        this.setState({slot8: "X"});
+      }
+      else if(this.state.slot8 === "O"){
+        this.alexTurnOneZero();
+      }
+      else if(this.state.slot9 === "O"){
+        this.setState({slot8: "X"});
+      }
+      turnNumber += 1;
+      this.playersTurn();
+    }
+  }
+
+  alexTurnOneZero(){
     let randomNumber = Math.random() * (4 - 1) + 1;
     randomNumber = Math.round(randomNumber);
     // console.log(randomNumber);
     if(randomNumber === 1 && this.state.slot1 === null){
+      // console.log("here");
       this.setState({slot1: "X"});
+      turnNumber += 1;
+      this.playersTurn();
     }
-    else if(randomNumber === 2 && this.state.slot2 === null){
+    else if(randomNumber === 2 && this.state.slot3 === null){
+      // console.log("here");
       this.setState({slot3: "X"});
+      turnNumber += 1;
+      this.playersTurn();
     }
-    else if(randomNumber === 3 && this.state.slot3 === null){
+    else if(randomNumber === 3 && this.state.slot7 === null){
+      // console.log("here");
       this.setState({slot7: "X"});
+      turnNumber += 1;
+      this.playersTurn();
     }
-    else if(randomNumber === 4 && this.state.slot4 === null){
+    else if(randomNumber === 4 && this.state.slot9 === null){
+      // console.log("here");
       this.setState({slot9: "X"});
+      turnNumber += 1;
+      this.playersTurn();
     }
-    this.playersTurn();
+    else{
+      // console.log("here");
+      this.alexTurnOneZero();
+    }
   }
 
   AlexTurnTwo(){
-    if(this.state.slot1 === "X" && this.state.slot9 === "O"){
+    if(this.state.slot1 === "X" && this.state.slot9 === "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
       // console.log("here");
       this.playersTurn();
     }
-    else if(this.state.slot3 === "X" && this.state.slot7 === "O"){
+    else if(this.state.slot3 === "X" && this.state.slot7 === "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
       // console.log("here");
       this.playersTurn();
     }
-    else if(this.state.slot7 === "X" && this.state.slot3 === "O"){
+    else if(this.state.slot7 === "X" && this.state.slot3 === "O" && this.state.slot1 === null){
       this.setState({slot1: "X"});
       // console.log("here");
       this.playersTurn();
     }
-    else if(this.state.slot9 === "X" && this.state.slot1 === "O"){
+    else if(this.state.slot9 === "X" && this.state.slot1 === "O" && this.state.slot3 === null){
       this.setState({slot3: "X"});
       // console.log("here");
       this.playersTurn();
@@ -260,7 +409,6 @@ class App extends Component {
       this.checkDraw();
     }
   }
-
 
   AlexAbleWinCheck(){
     // console.log("here");
@@ -809,7 +957,7 @@ class App extends Component {
       slot9: null,
       whoseTurn:''
     });
-    turnNumber = 1;
+    turnNumber = 0;
     this.componentDidMount();
   }
 
